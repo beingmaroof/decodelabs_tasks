@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Required viewport tag allowing users to zoom up to 5x for accessibility -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>DecodeLabs - Responsive Layout</title>
+    <link rel="stylesheet" href="style_task2.css">
+</head>
+
+<body>
+
+    <!-- Outer layout container using CSS Grid (Macro) -->
+    <div class="layout-container">
+        
+        <!-- Header -->
+        <header class="site-header">
+            <div class="logo">DecodeLabs</div>
+            
+            <!-- Mobile Navigation Trigger (Uses HTML Popover API - No JS) -->
+            <button popovertarget="nav-menu" class="menu-toggle" aria-label="Toggle Menu">
+                <span class="toggle-bar"></span>
+                <span class="toggle-bar"></span>
+                <span class="toggle-bar"></span>
+            </button>
+            
+            <!-- Navigation Links -->
+            <nav id="nav-menu" popover class="nav-navigation">
+                <!-- Close button for mobile popover -->
+                <button popovertarget="nav-menu" popovertargetaction="hide" class="menu-close" aria-label="Close Menu">&times;</button>
+                <ul class="nav-links">
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Syllabus</a></li>
+                    <li><a href="#">Settings</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Sidebar (Left Column on Desktop/Tablet) -->
+        <aside class="site-sidebar">
+            <div class="sidebar-widget">
+                <h3>Course Modules</h3>
+                <ul class="widget-list">
+                    <li><a href="#" class="active">Module 1: HTML Basics</a></li>
+                    <li><a href="#">Module 2: Responsive CSS</a></li>
+                    <li><a href="#">Module 3: Grid & Flexbox</a></li>
+                    <li><a href="#">Module 4: Javascript DOM</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-widget helper-widget">
+                <h3>Need Help?</h3>
+                <p>Contact your mentor or post a question on the DecodeLabs student community forum.</p>
+                <a href="#" class="btn-secondary">Visit Forum</a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="site-main">
+            <!-- Hero banner of main body -->
+            <section class="content-banner">
+                <h1>Fluid Grid Architectures</h1>
+                <p>Designing dynamic, user-first interfaces by bridging the gap between Grid and Flexbox.</p>
+            </section>
+
+            <!-- Card list using Flexbox / Grid -->
+            <section class="card-grid">
+                
+                <!-- Card 1 -->
+                <article class="content-card">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=400&h=220&q=80" 
+                         alt="Desk workspace with mockups on laptop screen">
+                    <div class="card-body">
+                        <h2>The Art of Fluidity</h2>
+                        <p>Content is like water. Designing with percentages and viewport units allows layout elements to expand and shrink fluidly.</p>
+                        <a href="#" class="card-btn">Read Article</a>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="content-card">
+                    <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=400&h=220&q=80" 
+                         alt="UX UI design process wireframes on paper and screen">
+                    <div class="card-body">
+                        <h2>Grid vs Flexbox</h2>
+                        <p>Use CSS Grid for the macro layout (the house framework) and Flexbox for micro-components (the furniture alignment).</p>
+                        <a href="#" class="card-btn">Read Article</a>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="content-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&h=220&q=80" 
+                         alt="Data charts and programming code on a monitor">
+                    <div class="card-body">
+                        <h2>Media Queries</h2>
+                        <p>Breakpoints are bridges, not fences. Build layouts starting from mobile viewport, enhancing styling rules upward.</p>
+                        <a href="#" class="card-btn">Read Article</a>
+                    </div>
+                </article>
+
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <p>&copy; 2026 DecodeLabs. All rights reserved. Industrial Training Program.</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,467 @@
+/* Import modern Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color System */
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-light: #eff6ff;
+    --text-dark: #1f2937;
+    --text-muted: #6b7280;
+    --bg-main: #f8fafc;
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
+    
+    /* Layout & Animation Values */
+    --border-radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --font-family: 'Poppins', sans-serif;
+    
+    /* Global Fluid Typography */
+    --font-size-h1: clamp(1.8rem, 4vw, 2.5rem);
+    --font-size-h2: clamp(1.3rem, 3vw, 1.7rem);
+    --font-size-body: clamp(0.9rem, 2vw, 1rem);
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   CSS GRID (Macro Layout - The House)
+   ========================================================================== */
+.layout-container {
+    display: grid;
+    /* Mobile-first layout stack */
+    grid-template-areas: 
+        "header"
+        "main"
+        "sidebar"
+        "footer";
+    grid-template-columns: 1fr;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+.site-header {
+    grid-area: header;
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.site-header .logo {
+    font-weight: 700;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    color: var(--primary);
+    letter-spacing: -0.5px;
+}
+
+/* Hamburger toggle bar styling */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 44px;
+    height: 44px;
+    padding: 12px 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.menu-toggle:hover {
+    background-color: var(--primary-light);
+}
+
+.toggle-bar {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-dark);
+    border-radius: 1px;
+}
+
+/* Close button on mobile popover */
+.menu-close {
+    background: none;
+    border: none;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--text-dark);
+    cursor: pointer;
+    align-self: flex-end;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.menu-close:hover {
+    background-color: var(--primary-light);
+    color: var(--primary);
+}
+
+/* Mobile-First Popover Navigation Styling */
+.nav-navigation[popover] {
+    border: none;
+    background-color: var(--card-bg);
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+    width: 280px;
+    height: 100vh;
+    margin: 0 0 0 auto; /* Slide in from the right */
+    padding: 24px;
+    transition: transform var(--transition);
+}
+
+/* Base Popover States */
+.nav-navigation[popover]:not(:popover-open) {
+    display: none;
+}
+
+.nav-navigation[popover]:popover-open {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Backdrop when mobile menu is active */
+.nav-navigation::backdrop {
+    background-color: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding: 12px 16px; /* Accessible touch target size */
+    min-height: 44px;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    background-color: var(--primary-light);
+    color: var(--primary);
+}
+
+/* ==========================================================================
+   Sidebar (Navigation / Widgets)
+   ========================================================================== */
+.site-sidebar {
+    grid-area: sidebar;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.sidebar-widget h3 {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.widget-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.widget-list a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 14px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.widget-list a:hover,
+.widget-list a.active {
+    background-color: var(--primary-light);
+    color: var(--primary);
+}
+
+.widget-list a.active {
+    font-weight: 600;
+}
+
+.helper-widget {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+}
+
+.helper-widget p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    color: var(--text-dark);
+    padding: 10px 16px;
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: none;
+    min-height: 44px;
+    transition: var(--transition);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-light);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* ==========================================================================
+   Main Content Area
+   ========================================================================== */
+.site-main {
+    grid-area: main;
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Banner Section */
+.content-banner {
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+    color: #ffffff;
+    border-radius: 16px;
+    padding: 40px 30px;
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
+}
+
+.content-banner h1 {
+    font-size: var(--font-size-h1);
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.content-banner p {
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    color: #bfdbfe;
+    max-width: 600px;
+}
+
+/* ==========================================================================
+   FLEXBOX (Micro Layouts - The Furniture)
+   ========================================================================== */
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.content-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+    
+    /* Flexbox Micro Layout: Stacks children vertically */
+    display: flex;
+    flex-direction: column;
+    
+    transition: var(--transition);
+}
+
+.content-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.content-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 24px;
+    /* Flexbox child growth behavior ensures equal height cards alignment */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-body h2 {
+    font-size: var(--font-size-h2);
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.card-body p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 20px;
+    /* Push button to bottom if text heights differ */
+    flex-grow: 1;
+}
+
+.card-btn {
+    align-self: flex-start;
+    background-color: var(--primary);
+    color: #ffffff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: var(--border-radius);
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.card-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+    grid-area: footer;
+    background-color: var(--text-dark);
+    color: #9ca3af;
+    text-align: center;
+    padding: 30px;
+    font-size: 13px;
+    border-top: 1px solid #374151;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (Breakpoints - The Bridges)
+   ========================================================================== */
+
+/* Tablet Layout (min-width: 768px) */
+@media (min-width: 768px) {
+    .layout-container {
+        /* Side-by-side template layout */
+        grid-template-areas: 
+            "header header"
+            "sidebar main"
+            "footer footer";
+        grid-template-columns: 240px 1fr;
+    }
+
+    .site-header {
+        padding: 20px 40px;
+    }
+
+    /* Override Popover for Desktop View */
+    .menu-toggle {
+        display: none;
+    }
+
+    .nav-navigation[popover] {
+        display: block !important;
+        position: static;
+        width: auto;
+        height: auto;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-navigation::backdrop {
+        display: none;
+    }
+
+    .menu-close {
+        display: none;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .site-sidebar {
+        border-top: none;
+        border-right: 1px solid var(--border-color);
+        padding: 40px 24px;
+    }
+
+    .site-main {
+        padding: 40px;
+    }
+
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large Screens (min-width: 1024px) */
+@media (min-width: 1024px) {
+    .layout-container {
+        grid-template-columns: 280px 1fr;
+    }
+
+    .card-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
