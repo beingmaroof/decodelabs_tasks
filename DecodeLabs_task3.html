@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Viewport configuration supporting accessible zoom up to 5x -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>DecodeLabs - Interactive Tracker</title>
+    <link rel="stylesheet" href="style_task3.css">
+    <!-- Defer loading of JS to ensure DOM is fully parsed -->
+    <script defer src="app_task3.js"></script>
+</head>
+
+<body>
+
+    <div class="app-container">
+        
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">DecodeLabs</div>
+            
+            <!-- Dark Mode Toggle Button (Decoupled: js- hook for logic) -->
+            <button class="theme-btn js-theme-toggle" aria-label="Toggle dark mode">
+                <span class="theme-icon sun-icon">☀️</span>
+                <span class="theme-icon moon-icon">🌙</span>
+            </button>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="app-main">
+            
+            <!-- Dashboard Stats Widget -->
+            <section class="stats-section">
+                <div class="stat-card">
+                    <h3>Total Modules</h3>
+                    <!-- Dynamic Text Node (Decoupled: js- hook) -->
+                    <p class="stat-number js-total-count">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Completed</h3>
+                    <p class="stat-number js-completed-count">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Completion Rate</h3>
+                    <p class="stat-number js-completion-rate">0%</p>
+                </div>
+            </section>
+
+            <!-- Interactive Controller Form -->
+            <section class="form-section">
+                <h2>Add Study Module</h2>
+                <form class="add-form js-add-form">
+                    <div class="input-group">
+                        <input type="text" class="form-input js-input-title" placeholder="e.g. Mastering CSS Grid" required>
+                    </div>
+                    <div class="input-group">
+                        <select class="form-select js-input-category">
+                            <option value="HTML">HTML Structure</option>
+                            <option value="CSS">CSS Layouts</option>
+                            <option value="JS">JavaScript Interactivity</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary js-submit-btn">Add Module</button>
+                </form>
+            </section>
+
+            <!-- List and Filters Section -->
+            <section class="list-section">
+                <div class="list-header">
+                    <h2>Your Learning Modules</h2>
+                    
+                    <!-- Filters (Decoupled: js- hook for logic) -->
+                    <div class="filter-controls">
+                        <button class="filter-btn is-active js-filter-all">All</button>
+                        <button class="filter-btn js-filter-pending">Pending</button>
+                        <button class="filter-btn js-filter-completed">Completed</button>
+                    </div>
+                </div>
+
+                <!-- Empty state placeholder (Decoupled: js- hook) -->
+                <div class="empty-state js-empty-state">
+                    <p>No modules added yet. Start by adding one above!</p>
+                </div>
+
+                <!-- Dynamic container for items (Decoupled: js- hook) -->
+                <ul class="module-list js-module-list">
+                    <!-- Javascript will inject list items dynamically here -->
+                </ul>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>&copy; 2026 DecodeLabs. All rights reserved. Industrial Training Program.</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
