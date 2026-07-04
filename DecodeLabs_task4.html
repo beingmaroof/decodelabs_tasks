@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Viewport supporting accessible zoom up to 5x -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>DecodeLabs - Form Validation</title>
+    <link rel="stylesheet" href="style_task4.css">
+    <!-- Defer loading of Javascript for proper DOM query loading -->
+    <script defer src="app_task4.js"></script>
+</head>
+
+<body>
+
+    <div class="form-container">
+        
+        <!-- Registration Card -->
+        <main class="card">
+            
+            <header class="card-header">
+                <div class="logo">DecodeLabs</div>
+                <h1>Create Your Account</h1>
+                <p>Join the 2026 industrial training program and kickstart your coding journey.</p>
+            </header>
+
+            <!-- Registration Form (Decoupled: js-form hook) -->
+            <form class="register-form js-form" novalidate>
+                
+                <!-- Full Name Field -->
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="fullName" class="form-input js-input-name" placeholder="Enter your full name" required>
+                        <span class="indicator-icon"></span>
+                    </div>
+                    <!-- Error Message (Decoupled: js- hook, hidden by default via CSS) -->
+                    <span class="error-message js-error-name" aria-live="polite"></span>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-wrapper">
+                        <input type="email" id="email" class="form-input js-input-email" placeholder="e.g. name@domain.com" required>
+                        <span class="indicator-icon"></span>
+                    </div>
+                    <span class="error-message js-error-email" aria-live="polite"></span>
+                </div>
+
+                <!-- Phone Number Field -->
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <div class="input-wrapper">
+                        <input type="tel" id="phone" class="form-input js-input-phone" placeholder="10-digit mobile number" required>
+                        <span class="indicator-icon"></span>
+                    </div>
+                    <span class="error-message js-error-phone" aria-live="polite"></span>
+                </div>
+
+                <!-- Password Field -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="password" class="form-input js-input-password" placeholder="Create a strong password" required>
+                        <span class="indicator-icon"></span>
+                    </div>
+                    <span class="error-message js-error-password" aria-live="polite"></span>
+                </div>
+
+                <!-- Confirm Password Field -->
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="confirmPassword" class="form-input js-input-confirm" placeholder="Repeat your password" required>
+                        <span class="indicator-icon"></span>
+                    </div>
+                    <span class="error-message js-error-confirm" aria-live="polite"></span>
+                </div>
+
+                <!-- Terms and Conditions Checkbox -->
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" class="js-input-terms" required>
+                        <span class="checkbox-custom"></span>
+                        <span class="label-text">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</span>
+                    </label>
+                    <span class="error-message js-error-terms" aria-live="polite"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-primary js-submit-btn">Register Now</button>
+
+            </form>
+
+        </main>
+
+        <!-- Success Modal overlay (Decoupled: is-hidden state class) -->
+        <div class="success-overlay is-hidden js-success-modal">
+            <div class="success-modal">
+                <div class="success-icon">✓</div>
+                <h2>Registration Successful!</h2>
+                <p>Your account has been created. A confirmation email has been sent to <strong class="js-success-email"></strong>.</p>
+                <button class="btn-primary js-close-modal">Go to Dashboard</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
